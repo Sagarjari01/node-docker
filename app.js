@@ -7,7 +7,7 @@ const session = require('express-session');
 const RedisStore = require('connect-redis').default
 
 const mongoose = require('mongoose');
-const { MONGO_CONTAINER, MONGO_PORT, MONGO_DATABASE_NAME } = require('./config/config');
+const { MONGO_CONTAINER, MONGO_PORT, MONGO_DATABASE_NAME, SESSION_SECRET } = require('./config/config');
 const node_env = process.env.NODE_ENV
 const postRouter = require('./routes/postRoute');
 const userRouter = require('./routes/userRoute');
@@ -18,7 +18,7 @@ app.enable("trust proxy")
 client.connect().catch(console.error)
 app.use(session({
   store: new RedisStore({client: client}),
-  secret: 'lsdfojjefjufereo', 
+  secret: SESSION_SECRET, 
   resave: false,
   saveUninitialized: true,
   cookie: {
