@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  backend:
+    build: 
+      context: .
+      args: 
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    # ports:
+    #   - "5000:${PORT}" 
+    environment:
+      - NODE_ENV=development
+      - MONGO_DATABASE_NAME=mydb
+    command: npm run dev
