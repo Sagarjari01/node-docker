@@ -34,9 +34,10 @@ app.use(morgan('tiny'))
 const MONGO_URL = `mongodb://${MONGO_CONTAINER}:${MONGO_PORT}/${MONGO_DATABASE_NAME}`;
 // const MONGO_URL = `mongodb://localhost:27017/mydb`;
 
-app.get('/',()=>{
-  res.send('<h1>Hello</h1>')
+app.get("/api",(req,res)=>{
+  res.send("hello its working")
 })
+
 
 app.use("/api/v1/posts",postRouter)
 app.use("/api/v1/users",userRouter)
