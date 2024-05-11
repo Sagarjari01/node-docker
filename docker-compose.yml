@@ -2,8 +2,6 @@ version: '3.9'
 services:
   nginx:
     image: nginx:stable-alpine
-    ports:
-      - "5000:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   backend:
@@ -15,7 +13,7 @@ services:
       - ./.env
   mongo:
     image: mongo
-    ports:
+    # ports:
       # - 2717:27017
     volumes:
       - mongo_db:/data/db
